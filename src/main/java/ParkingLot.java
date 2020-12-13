@@ -1,37 +1,67 @@
 package main.java;
 
+import java.util.Scanner;
+
 class ParkingLot {
-    Integer standardSlot;
-    Integer fiftyKWSlot;
-    Integer twentyKWSlot;
+    Integer standardFreeSlotNumber;
     Double standardSlotPricePerHour;
-    Double fiftyKWSlotPricePerHour;
+    Integer twentyKWFreeSlotNumber;
     Double twentyKWSlotPricePerHour;
+    Integer fiftyKWFreeSlotNumber;
+    Double fiftyKWSlotPricePerHour;
     Double parkimgFixedFee;
-    Integer numberOfSlots;
+
+    public ParkingLot() {
+
+        Scanner keyboard = new Scanner(System.in);
+
+        // Standard Cars
+        System.out.print("Please enter Number of Slots for Standard Cars: ");
+        this.standardFreeSlotNumber = keyboard.nextInt();
+        System.out.print("Please enter the hourly fee for Standard Cars: ");
+        this.standardSlotPricePerHour = keyboard.nextDouble();
+
+        // 20KW Cars
+        System.out.print("Please enter Number of Slots for 20KW Cars: ");
+        this.twentyKWFreeSlotNumber = keyboard.nextInt();
+        System.out.print("Please enter the hourly fee for 20KW Cars: ");
+        this.twentyKWSlotPricePerHour = keyboard.nextDouble();
+
+        // 50KW Cars
+        System.out.print("Please enter Number of Slots for 50KW Cars: ");
+        this.fiftyKWFreeSlotNumber = keyboard.nextInt();
+        System.out.print("Please enter the hourly fee for 50KW Cars: ");
+        this.fiftyKWSlotPricePerHour = keyboard.nextDouble();
+
+        // Fixed fee
+        System.out.print("Please enter the parking fixed fee: ");
+        this.parkimgFixedFee = keyboard.nextDouble();
+
+        keyboard.nextLine(); // to handle the end of line characters
+    }
 
     public Integer getStandardSlot() {
-        return this.standardSlot;
+        return this.standardFreeSlotNumber;
     }
 
     public void setStandardSlot(Integer standardSlot) {
-        this.standardSlot = standardSlot;
+        this.standardFreeSlotNumber = standardSlot;
     }
 
     public Integer getFiftyKWSlot() {
-        return this.fiftyKWSlot;
+        return this.fiftyKWFreeSlotNumber;
     }
 
     public void setFiftyKWSlot(Integer fiftyKWSlot) {
-        this.fiftyKWSlot = fiftyKWSlot;
+        this.fiftyKWFreeSlotNumber = fiftyKWSlot;
     }
 
     public Integer getTwentyKWSlot() {
-        return this.twentyKWSlot;
+        return this.twentyKWFreeSlotNumber;
     }
 
     public void setTwentyKWSlot(Integer twentyKWSlot) {
-        this.twentyKWSlot = twentyKWSlot;
+        this.twentyKWFreeSlotNumber = twentyKWSlot;
     }
 
     public Double getStandardSlotPricePerHour() {
@@ -64,14 +94,6 @@ class ParkingLot {
 
     public void setParkimgFixedFee(Double parkimgFixedFee) {
         this.parkimgFixedFee = parkimgFixedFee;
-    }
-
-    public Integer getNumberOfSlots() {
-        return this.numberOfSlots;
-    }
-
-    public void setNumberOfSlots(Integer numberOfSlots) {
-        this.numberOfSlots = numberOfSlots;
     }
 
 }

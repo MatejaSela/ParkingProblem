@@ -64,19 +64,29 @@ public class ParkingLotStart {
                     - (parkingLot.getStandardSlotPricePerHour() * car.getHoursStayedAtParkingLot()) < 0) {
                 throw new NoMoneyExcetion("ALERT! not enough money to pay fees!");
             }
-        } else if (car.getCarType().equals("TwentyKW")) {
+            else{
+                car.setMoneyToPayFees(car.moneyToPayFees - parkingLot.parkingFixedFee);
+                parkingLot.setStandardSlot(parkingLot.getstandardSlot() + 1);
+            }
+        } if (car.getCarType().equals("TwentyKW")) {
             if (car.moneyToPayFees
                     - (parkingLot.getTwentyKWSlotPricePerHour() * car.getHoursStayedAtParkingLot()) < 0) {
                 throw new NoMoneyExcetion("ALERT! not enough money to pay fees!");
             }
-        } else if (car.getCarType().equals("FiftyKW")) {
+            else{
+                car.setMoneyToPayFees(car.moneyToPayFees - parkingLot.parkingFixedFee);
+                parkingLot.setStandardSlot(parkingLot.getstandardSlot() + 1);
+            }
+        } if (car.getCarType().equals("FiftyKW")) {
             if (car.moneyToPayFees - (parkingLot.getFiftyKWSlotPricePerHour() * car.getHoursStayedAtParkingLot()) < 0) {
                 throw new NoMoneyExcetion("ALERT! not enough money to pay fees!");
             }
-        } else {
-            car.setMoneyToPayFees(car.moneyToPayFees - parkingLot.parkingFixedFee);
-            System.out.println("successfull entrance fee payment!");
+            else{
+                car.setMoneyToPayFees(car.moneyToPayFees - parkingLot.parkingFixedFee);
+                parkingLot.setFiftyKWSlot(parkingLot.getFiftyKWSlot() + 1);
+            }
         }
+        System.out.println("successfull entrance fee payment!");
     }
 
     static void raiseAlarm() {

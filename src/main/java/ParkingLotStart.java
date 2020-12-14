@@ -1,9 +1,8 @@
-package main.java;
+import exceptions.NoMoneyExcetion;
+import exceptions.NoSpaceExcetion;
+import objects.Car;
+import objects.ParkingLot;
 
-import main.java.exceptions.NoMoneyExcetion;
-import main.java.exceptions.NoSpaceExcetion;
-
-// ex. CarList ["FiftyKW In 20 2", "TwentyKW In 30", "Twenty Out 500 10"]
 public class ParkingLotStart {
 
     public static void main(String[] args) throws NoMoneyExcetion, NoSpaceExcetion {
@@ -16,7 +15,6 @@ public class ParkingLotStart {
         isCarEnteringOrExitingLot(car1, parkingLot1);
         isCarEnteringOrExitingLot(car2, parkingLot1);
         isCarEnteringOrExitingLot(car3, parkingLot1);
-
     }
 
     static void isCarEnteringOrExitingLot(Car car, ParkingLot parkingLot) throws NoMoneyExcetion, NoSpaceExcetion {
@@ -34,11 +32,11 @@ public class ParkingLotStart {
 
     private static void checkSpaceAtParkingLot(Car car, ParkingLot parkingLot) throws NoSpaceExcetion {
         if (parkingLot.getStandardSlot() > 0 && car.getCarType().equals("Standard")) {
-            parkingLot.setStandardSlot(parkingLot.getStandardSlot() - 1);
+            parkingLot.standardFreeSlotNumber--;
         } else if (parkingLot.getTwentyKWSlot() > 0 && car.getCarType().equals("TwentyKW")) {
-            parkingLot.setTwentyKWSlot(parkingLot.getTwentyKWSlot() - 1);
+            parkingLot.twentyKWFreeSlotNumber--;
         } else if (parkingLot.getFiftyKWSlot() > 0 && car.getCarType().equals("FiftyKW")) {
-            parkingLot.setFiftyKWSlot(parkingLot.getFiftyKWSlot() - 1);
+            parkingLot.fiftyKWFreeSlotNumber--;
         } else {
             throw new NoSpaceExcetion("ALERT! not enough space at the parking lot, please try again!");
         }
@@ -49,7 +47,7 @@ public class ParkingLotStart {
         if (car.moneyToPayFees - parkingLot.parkingFixedFee < 0) {
             throw new NoMoneyExcetion("ALERT! not enough money to pay fees!");
         }
-        car.setMoneyToPayFees(car.moneyToPayFees - parkingLot.parkingFixedFee);
+        car.moneyToPayFees = car.moneyToPayFees - parkingLot.parkingFixedFee;
         System.out.println("successfull entrance fee payment!");
     }
 
@@ -63,27 +61,26 @@ public class ParkingLotStart {
             if (car.moneyToPayFees
                     - (parkingLot.getStandardSlotPricePerHour() * car.getHoursStayedAtParkingLot()) < 0) {
                 throw new NoMoneyExcetion("ALERT! not enough money to pay fees!");
+            } else {
+                car.moneyToPayFees = car.moneyToPayFees - parkingLot.parkingFixedFee;
+                parkingLot.standardFreeSlotNumber++;
             }
-            else{
-                car.setMoneyToPayFees(car.moneyToPayFees - parkingLot.parkingFixedFee);
-                parkingLot.setStandardSlot(parkingLot.getstandardSlot() + 1);
-            }
-        } if (car.getCarType().equals("TwentyKW")) {
+        }
+        if (car.getCarType().equals("TwentyKW")) {
             if (car.moneyToPayFees
                     - (parkingLot.getTwentyKWSlotPricePerHour() * car.getHoursStayedAtParkingLot()) < 0) {
                 throw new NoMoneyExcetion("ALERT! not enough money to pay fees!");
+            } else {
+                car.moneyToPayFees = car.moneyToPayFees - parkingLot.parkingFixedFee;
+                parkingLot.twentyKWFreeSlotNumber++;
             }
-            else{
-                car.setMoneyToPayFees(car.moneyToPayFees - parkingLot.parkingFixedFee);
-                parkingLot.setStandardSlot(parkingLot.getstandardSlot() + 1);
-            }
-        } if (car.getCarType().equals("FiftyKW")) {
+        }
+        if (car.getCarType().equals("FiftyKW")) {
             if (car.moneyToPayFees - (parkingLot.getFiftyKWSlotPricePerHour() * car.getHoursStayedAtParkingLot()) < 0) {
                 throw new NoMoneyExcetion("ALERT! not enough money to pay fees!");
-            }
-            else{
-                car.setMoneyToPayFees(car.moneyToPayFees - parkingLot.parkingFixedFee);
-                parkingLot.setFiftyKWSlot(parkingLot.getFiftyKWSlot() + 1);
+            } else {
+                car.moneyToPayFees = car.moneyToPayFees - parkingLot.parkingFixedFee;
+                parkingLot.fiftyKWFreeSlotNumber++;
             }
         }
         System.out.println("successfull entrance fee payment!");

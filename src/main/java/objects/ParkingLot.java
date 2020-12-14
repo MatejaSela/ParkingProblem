@@ -1,15 +1,15 @@
-package main.java;
+package objects;
 
 import java.util.Scanner;
 
-class ParkingLot {
-    Integer standardFreeSlotNumber;
-    Double standardSlotPricePerHour;
-    Integer twentyKWFreeSlotNumber;
-    Double twentyKWSlotPricePerHour;
-    Integer fiftyKWFreeSlotNumber;
-    Double fiftyKWSlotPricePerHour;
-    Double parkingFixedFee;
+public class ParkingLot {
+    public Integer standardFreeSlotNumber;
+    public Double standardSlotPricePerHour;
+    public Integer twentyKWFreeSlotNumber;
+    public Double twentyKWSlotPricePerHour;
+    public Integer fiftyKWFreeSlotNumber;
+    public Double fiftyKWSlotPricePerHour;
+    public Double parkingFixedFee;
 
     public ParkingLot() {
 
@@ -38,15 +38,12 @@ class ParkingLot {
         this.parkingFixedFee = keyboard.nextDouble();
 
         keyboard.nextLine(); // to handle the end of line characters
+        keyboard.close();
     }
 
-    public ParkingLot(Integer standardFreeSlotNumber,
-    Double standardSlotPricePerHour,
-    Integer twentyKWFreeSlotNumber,
-    Double twentyKWSlotPricePerHour,
-    Integer fiftyKWFreeSlotNumber,
-    Double fiftyKWSlotPricePerHour,
-    Double parkingFixedFee) {
+    public ParkingLot(Integer standardFreeSlotNumber, Double standardSlotPricePerHour, Integer twentyKWFreeSlotNumber,
+            Double twentyKWSlotPricePerHour, Integer fiftyKWFreeSlotNumber, Double fiftyKWSlotPricePerHour,
+            Double parkingFixedFee) {
         this.standardFreeSlotNumber = standardFreeSlotNumber;
         this.standardSlotPricePerHour = standardSlotPricePerHour;
         this.twentyKWFreeSlotNumber = twentyKWFreeSlotNumber;

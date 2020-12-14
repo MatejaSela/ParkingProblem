@@ -1,10 +1,10 @@
-package main.java;
+package objects;
 
 public class Car {
-    String carType;
-    Double moneyToPayFees;
-    Integer hoursStayedAtParkingLot;
-    Boolean enteringTheLot;
+    public String carType;
+    public Double moneyToPayFees;
+    public Integer hoursStayedAtParkingLot;
+    public Boolean enteringTheLot;
 
     public Car(String carType, Double moneyToPayFees, Integer hoursStayedAtParkingLot, Boolean enteringTheLot) {
         this.carType = carType;

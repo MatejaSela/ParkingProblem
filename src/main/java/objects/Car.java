@@ -12,36 +12,4 @@ public class Car {
         this.hoursStayedAtParkingLot = hoursStayedAtParkingLot;
         this.enteringTheLot = enteringTheLot;
     }
-
-    public String getCarType() {
-        return this.carType;
-    }
-
-    public void setCarType(String carType) {
-        this.carType = carType;
-    }
-
-    public Double getMoneyToPayFees() {
-        return this.moneyToPayFees;
-    }
-
-    public void setMoneyToPayFees(Double moneyToPayFees) {
-        this.moneyToPayFees = moneyToPayFees;
-    }
-
-    public Integer getHoursStayedAtParkingLot() {
-        return this.hoursStayedAtParkingLot;
-    }
-
-    public void setHoursStayedAtParkingLot(Integer hoursStayedAtParkingLot) {
-        this.hoursStayedAtParkingLot = hoursStayedAtParkingLot;
-    }
-
-    public Boolean getEnteringTheLot() {
-        return this.enteringTheLot;
-    }
-
-    public void setEnteringTheLot(Boolean enteringTheLot) {
-        this.enteringTheLot = enteringTheLot;
-    }
 }

@@ -32,11 +32,11 @@ public class ParkingLotStart {
     }
 
     private static void checkSpaceAtParkingLot(Car car, ParkingLot parkingLot) throws NoSpaceExcetion {
-        if (parkingLot.getStandardSlot() > 0 && car.getCarType().equals("Standard")) {
+        if (parkingLot.standardFreeSlotNumber > 0 && car.carType.equals("Standard")) {
             parkingLot.standardFreeSlotNumber--;
-        } else if (parkingLot.getTwentyKWSlot() > 0 && car.getCarType().equals("TwentyKW")) {
+        } else if (parkingLot.twentyKWFreeSlotNumber > 0 && car.carType.equals("TwentyKW")) {
             parkingLot.twentyKWFreeSlotNumber--;
-        } else if (parkingLot.getFiftyKWSlot() > 0 && car.getCarType().equals("FiftyKW")) {
+        } else if (parkingLot.fiftyKWFreeSlotNumber > 0 && car.carType.equals("FiftyKW")) {
             parkingLot.fiftyKWFreeSlotNumber--;
         } else {
             throw new NoSpaceExcetion("ALERT! not enough space at the parking lot, please try again!");

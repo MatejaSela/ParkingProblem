@@ -40,6 +40,22 @@ class ParkingLot {
         keyboard.nextLine(); // to handle the end of line characters
     }
 
+    public ParkingLot(Integer standardFreeSlotNumber,
+    Double standardSlotPricePerHour,
+    Integer twentyKWFreeSlotNumber,
+    Double twentyKWSlotPricePerHour,
+    Integer fiftyKWFreeSlotNumber,
+    Double fiftyKWSlotPricePerHour,
+    Double parkingFixedFee) {
+        this.standardFreeSlotNumber = standardFreeSlotNumber;
+        this.standardSlotPricePerHour = standardSlotPricePerHour;
+        this.twentyKWFreeSlotNumber = twentyKWFreeSlotNumber;
+        this.twentyKWSlotPricePerHour = twentyKWSlotPricePerHour;
+        this.fiftyKWFreeSlotNumber = fiftyKWFreeSlotNumber;
+        this.fiftyKWSlotPricePerHour = fiftyKWSlotPricePerHour;
+        this.parkingFixedFee = parkingFixedFee;
+    }
+
     public Integer getStandardSlot() {
         return this.standardFreeSlotNumber;
     }

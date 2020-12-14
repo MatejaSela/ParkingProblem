@@ -9,7 +9,7 @@ class ParkingLot {
     Double twentyKWSlotPricePerHour;
     Integer fiftyKWFreeSlotNumber;
     Double fiftyKWSlotPricePerHour;
-    Double parkimgFixedFee;
+    Double parkingFixedFee;
 
     public ParkingLot() {
 
@@ -35,7 +35,7 @@ class ParkingLot {
 
         // Fixed fee
         System.out.print("Please enter the parking fixed fee: ");
-        this.parkimgFixedFee = keyboard.nextDouble();
+        this.parkingFixedFee = keyboard.nextDouble();
 
         keyboard.nextLine(); // to handle the end of line characters
     }
@@ -88,12 +88,12 @@ class ParkingLot {
         this.twentyKWSlotPricePerHour = twentyKWSlotPricePerHour;
     }
 
-    public Double getParkimgFixedFee() {
-        return this.parkimgFixedFee;
+    public Double getParkingFixedFee() {
+        return this.parkingFixedFee;
     }
 
-    public void setParkimgFixedFee(Double parkimgFixedFee) {
-        this.parkimgFixedFee = parkimgFixedFee;
+    public void setParkingFixedFee(Double parkingFixedFee) {
+        this.parkingFixedFee = parkingFixedFee;
     }
 
 }

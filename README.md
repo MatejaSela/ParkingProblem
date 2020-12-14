@@ -8,9 +8,15 @@ In order to create a parking lot you just need to run the main class "parkingLot
 
 # Data input
 
-Please find the example input in the "examples" folder. The data is read line by line, where each line presents the type of the car, whether the car goes in or out,what the amount of money the person has and number of hours the person stays. In case the person cannot pay the rate, there will be an "alarm" set off.
+Please find the example input in the ParkingLotStart class, while the Car class represents the type of the car, whether the car goes in or out,what the amount of money the person has and number of hours the person stayed. In case the person cannot pay the rate, there will be an "alarm" set off.
 
-- ex. CarList ["FiftyKW In 20 2", "TwentyKW In 30", "Twenty Out 500 10"]
+- ex. Car
+  String carType = FiftyKW
+  Double moneyToPayFees = 20
+  Integer hoursStayedAtParkingLot = 0
+  Boolean enteringTheLot = true
+
+After some time the car will exit the lot and the hoursStayedAtParkingLot will change accordingly.
 
 # Tools used
 

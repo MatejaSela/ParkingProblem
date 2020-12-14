@@ -12,12 +12,15 @@ Please find the example input in the ParkingLotStart class, while the Car class 
 
 - ex. Car
   String carType = FiftyKW
+  
   Double moneyToPayFees = 20
+  
   Integer hoursStayedAtParkingLot = 0
+  
   Boolean enteringTheLot = true
 
 After some time the car will exit the lot and the hoursStayedAtParkingLot will change accordingly.
 
 # Tools used
 
-Plain Java was used for this project.
+Plain Java was used for this project, mvn and Junit to run the tests

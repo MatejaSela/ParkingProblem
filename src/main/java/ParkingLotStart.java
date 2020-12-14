@@ -1,12 +1,12 @@
 package main.java;
 
-import main.java.exceptions.AlarmExcetion;
+import main.java.exceptions.NoMoneyExcetion;
 import main.java.exceptions.NoSpaceExcetion;
 
 // ex. CarList ["FiftyKW In 20 2", "TwentyKW In 30", "Twenty Out 500 10"]
 public class ParkingLotStart {
 
-    public static void main(String[] args) throws AlarmExcetion, NoSpaceExcetion {
+    public static void main(String[] args) throws NoMoneyExcetion, NoSpaceExcetion {
         ParkingLot parkingLot1 = new ParkingLot();
 
         Car car1 = new Car("FiftyKW", 20.0, 0, true);
@@ -19,7 +19,7 @@ public class ParkingLotStart {
 
     }
 
-    static void isCarEnteringOrExitingLot(Car car, ParkingLot parkingLot) throws AlarmExcetion, NoSpaceExcetion {
+    static void isCarEnteringOrExitingLot(Car car, ParkingLot parkingLot) throws NoMoneyExcetion, NoSpaceExcetion {
         if (car.enteringTheLot) {
             enterParkingLot(car, parkingLot);
         } else {
@@ -27,7 +27,7 @@ public class ParkingLotStart {
         }
     }
 
-    static void enterParkingLot(Car car, ParkingLot parkingLot) throws AlarmExcetion, NoSpaceExcetion {
+    static void enterParkingLot(Car car, ParkingLot parkingLot) throws NoMoneyExcetion, NoSpaceExcetion {
         checkEntranceFees(car, parkingLot);
         checkSpaceAtParkingLot(car, parkingLot);
     }
@@ -45,33 +45,33 @@ public class ParkingLotStart {
         System.out.println("successfully parked!");
     }
 
-    private static void checkEntranceFees(Car car, ParkingLot parkingLot) throws AlarmExcetion {
+    private static void checkEntranceFees(Car car, ParkingLot parkingLot) throws NoMoneyExcetion {
         if (car.moneyToPayFees - parkingLot.parkingFixedFee < 0) {
-            throw new AlarmExcetion("ALERT! not enough money to pay fees!");
+            throw new NoMoneyExcetion("ALERT! not enough money to pay fees!");
         }
         car.setMoneyToPayFees(car.moneyToPayFees - parkingLot.parkingFixedFee);
         System.out.println("successfull entrance fee payment!");
     }
 
-    static void exitParkingLot(Car car, ParkingLot parkingLot) throws AlarmExcetion {
+    static void exitParkingLot(Car car, ParkingLot parkingLot) throws NoMoneyExcetion {
         checkExitFees(car, parkingLot);
         System.out.println("successfully exited, thank you for staying with us!");
     }
 
-    private static void checkExitFees(Car car, ParkingLot parkingLot) throws AlarmExcetion {
+    private static void checkExitFees(Car car, ParkingLot parkingLot) throws NoMoneyExcetion {
         if (car.getCarType().equals("Standard")) {
             if (car.moneyToPayFees
                     - (parkingLot.getStandardSlotPricePerHour() * car.getHoursStayedAtParkingLot()) < 0) {
-                throw new AlarmExcetion("ALERT! not enough money to pay fees!");
+                throw new NoMoneyExcetion("ALERT! not enough money to pay fees!");
             }
         } else if (car.getCarType().equals("TwentyKW")) {
             if (car.moneyToPayFees
                     - (parkingLot.getTwentyKWSlotPricePerHour() * car.getHoursStayedAtParkingLot()) < 0) {
-                throw new AlarmExcetion("ALERT! not enough money to pay fees!");
+                throw new NoMoneyExcetion("ALERT! not enough money to pay fees!");
             }
         } else if (car.getCarType().equals("FiftyKW")) {
             if (car.moneyToPayFees - (parkingLot.getFiftyKWSlotPricePerHour() * car.getHoursStayedAtParkingLot()) < 0) {
-                throw new AlarmExcetion("ALERT! not enough money to pay fees!");
+                throw new NoMoneyExcetion("ALERT! not enough money to pay fees!");
             }
         } else {
             car.setMoneyToPayFees(car.moneyToPayFees - parkingLot.parkingFixedFee);

@@ -8,6 +8,7 @@ public class ParkingLotStart {
     public static void main(String[] args) throws NoMoneyExcetion, NoSpaceExcetion {
         ParkingLot parkingLot1 = new ParkingLot();
 
+        // Example cars, some will fail to execute, since the program throws exception
         Car car1 = new Car("FiftyKW", 20.0, 0, true);
         Car car2 = new Car("Standard", 0.0, 2, true);
         Car car3 = new Car("TwentyKW", 100.0, 0, true);
@@ -57,29 +58,30 @@ public class ParkingLotStart {
     }
 
     private static void checkExitFees(Car car, ParkingLot parkingLot) throws NoMoneyExcetion {
-        if (car.getCarType().equals("Standard")) {
-            if (car.moneyToPayFees
-                    - (parkingLot.getStandardSlotPricePerHour() * car.getHoursStayedAtParkingLot()) < 0) {
+        if (car.carType.equals("Standard")) {
+            if (car.moneyToPayFees - (parkingLot.standardSlotPricePerHour * car.hoursStayedAtParkingLot) < 0) {
                 throw new NoMoneyExcetion("ALERT! not enough money to pay fees!");
             } else {
-                car.moneyToPayFees = car.moneyToPayFees - parkingLot.parkingFixedFee;
+                car.moneyToPayFees = car.moneyToPayFees
+                        - parkingLot.standardSlotPricePerHour * car.hoursStayedAtParkingLot;
                 parkingLot.standardFreeSlotNumber++;
             }
         }
-        if (car.getCarType().equals("TwentyKW")) {
-            if (car.moneyToPayFees
-                    - (parkingLot.getTwentyKWSlotPricePerHour() * car.getHoursStayedAtParkingLot()) < 0) {
+        if (car.carType.equals("TwentyKW")) {
+            if (car.moneyToPayFees - (parkingLot.twentyKWSlotPricePerHour * car.hoursStayedAtParkingLot) < 0) {
                 throw new NoMoneyExcetion("ALERT! not enough money to pay fees!");
             } else {
-                car.moneyToPayFees = car.moneyToPayFees - parkingLot.parkingFixedFee;
+                car.moneyToPayFees = car.moneyToPayFees
+                        - parkingLot.standardSlotPricePerHour * car.hoursStayedAtParkingLot;
                 parkingLot.twentyKWFreeSlotNumber++;
             }
         }
-        if (car.getCarType().equals("FiftyKW")) {
-            if (car.moneyToPayFees - (parkingLot.getFiftyKWSlotPricePerHour() * car.getHoursStayedAtParkingLot()) < 0) {
+        if (car.carType.equals("FiftyKW")) {
+            if (car.moneyToPayFees - (parkingLot.fiftyKWSlotPricePerHour * car.hoursStayedAtParkingLot) < 0) {
                 throw new NoMoneyExcetion("ALERT! not enough money to pay fees!");
             } else {
-                car.moneyToPayFees = car.moneyToPayFees - parkingLot.parkingFixedFee;
+                car.moneyToPayFees = car.moneyToPayFees
+                        - parkingLot.standardSlotPricePerHour * car.hoursStayedAtParkingLot;
                 parkingLot.fiftyKWFreeSlotNumber++;
             }
         }

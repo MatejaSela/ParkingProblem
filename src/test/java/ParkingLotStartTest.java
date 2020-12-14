@@ -5,6 +5,8 @@ import org.junit.jupiter.api.Test;
 
 import exceptions.NoMoneyExcetion;
 import exceptions.NoSpaceExcetion;
+import objects.Car;
+import objects.ParkingLot;
 
 public class ParkingLotStartTest {
 
@@ -43,7 +45,7 @@ public class ParkingLotStartTest {
     }
 
     @Test
-    public void enterParkingLot_givenNotEngoughSpaceAtLot_ThrowsException() throws NoMoneyExcetion, NoSpaceExcetion {
+    public void enterParkingLot_givenNotEnoughSpaceAtLot_ThrowsException() throws NoMoneyExcetion, NoSpaceExcetion {
         // Setup
         Car car = new Car("FiftyKW", 1000.0, 1, true);
         parkingLot1.fiftyKWFreeSlotNumber = 0;
@@ -52,14 +54,25 @@ public class ParkingLotStartTest {
         assertThrows(NoSpaceExcetion.class, () -> ParkingLotStart.enterParkingLot(car, parkingLot1));
     }
 
-    /*
-     * @Test public void
-     * exitParkingLot_givenCarWithEnoughMoney_ReducesCarsMoneyForExitFeeAndIncreasesNumberOfSpacesForParkingLotCorrectly
-     * () throws NoMoneyExcetion { ParkingLotStart.exitParkingLot(car1,
-     * parkingLot1); // assert statements assertEquals(20.0 -
-     * parkingLot1.parkingFixedFee, car1.moneyToPayFees, 0.1); assertEquals(0,
-     * parkingLot1.fiftyKWFreeSlotNumber, 0.1);
-     * 
-     * }
-     */
+    @Test
+    public void exitParkingLot_givenCarWithEnoughMoney_ReducesCarsMoneyForEntranceFeeValue()
+            throws NoMoneyExcetion, NoSpaceExcetion {
+        // Setup
+        Car car = new Car("Standard", 150.0, 3, true);
+
+        // Act
+        ParkingLotStart.exitParkingLot(car, parkingLot1);
+        // Check
+        assertEquals(150.0 - 3 * parkingLot1.standardSlotPricePerHour, car.moneyToPayFees, 0.1);
+    }
+
+    @Test
+    public void exitParkingLot_givenNotEnoughMoney_ThrowsException() throws NoMoneyExcetion, NoSpaceExcetion {
+        // Setup
+        Car car = new Car("FiftyKW", 0.0, 3, true);
+        parkingLot1.fiftyKWFreeSlotNumber = 0;
+
+        // Act and Check
+        assertThrows(NoMoneyExcetion.class, () -> ParkingLotStart.exitParkingLot(car, parkingLot1));
+    }
 }
